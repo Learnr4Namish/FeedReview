@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/css/pythonreview00001.css">
+    <title>FeedReview | New Consumer</title>
+</head>
+<body>
+    <form class="loginForm" method="post" action="http://localhost/register" id="newConsumerForm">
+        <p style="font-weight: bold; font-size: 1.5rem; margin-left: 0px; color: #006dbb; text-align: center;">FeedReview New Consumer<p></p>
+        <div style="margin-left: 8px; margin-right: 8px;">
+                <div>
+                    <label for="consumerAddress">Consumer Email Address:</label>
+                <br>
+                <input id="consumerAddress" type="email" class="formInput" name="consumerEmailAddress" required>
+                </div>
+                <div>
+                    <label for="consumerName">Consumer Name:</label>
+                <br>
+                <input id="consumerName" type="text'" class="formInput" name="consumerName" required>
+                </div>
+                <div class="keyButton" id="clickSubmit" style="margin-top: 18px;">Next</div>
+                <div class="keyButton" id="newConsumer" style="margin-top: 18px;">I'm an existing user</div>
+                <br>
+            </div>
+    </form>
+    </script>
+    <script type="module">
+        import { WebArtino } from "https://webartino.pages.dev/webartino.js"
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyCjHh-YJ_J0GewvyUV0rJU1MHdEVE_FpqY",
+  authDomain: "feedreview.firebaseapp.com",
+  projectId: "feedreview",
+  storageBucket: "feedreview.appspot.com",
+  messagingSenderId: "682710898899",
+  appId: "1:682710898899:web:72b5126f226ea2b0a81c26",
+  measurementId: "G-W2V4WD0RWN"
+};
+const app = initializeApp(firebaseConfig);
+        if(localStorage.getItem("loggedIn") === "yes") {
+            location.href = "/index.html";
+        }else{
+            WebArtino.byId("clickSubmit").onclick = function() {
+                WebArtino.byId("clickSubmit").style.background = "rgb(125, 0, 0)";
+                WebArtino.byId("clickSubmit").innerHTML = "Please Wait..."
+                WebArtino.byId("clickSubmit").style.color = "rgb(195,195,195)";
+                WebArtino.byId("clickSubmit").style.userSelect = "none";
+                WebArtino.showAlertMessage("We will mail you a form where you can complete your FeedReview registration.")
+                  WebArtino.byId("newConsumerForm").submit();
+            }
+           WebArtino.byId("newConsumer").onclick = function() {
+               window.open("/newConsumer.html");
+           }
+        }
+    </script>
+</body>
+</html>

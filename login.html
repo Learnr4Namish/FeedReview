@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/dist/css/pythonreview00001.css">
+    <title>FeedReview | Login</title>
+</head>
+<body>
+    <div id="formLoginnerParent">
+        <div>
+            <form action="http://localhost/loginUser" class="loginForm" id="loginForm" method="post">
+                <p style="font-weight: bold; font-size: 1.5rem; margin-left: 0px; color: #0090f6; text-align: center;">Login<p></p>
+                <div style="margin-left: 8px; margin-right: 8px;">
+                        <div>
+                            <label for="consumerID">Consumer ID:</label>
+                        <br>
+        <div class="consumerPersonDIV">
+           <input id="consumerID" name="consumerID" type="text" class="formInput" style="margin-left: 5px; " required>
+        </div>
+                        </div>
+                        <div>
+                            <label for="consumerKey">Consumer Key:</label>
+                        <br>
+                        <div class="consumerPersonDiv">
+                            <input id="consumerKey" name="consumerKey" type="password" class="formInput"  style="margin-left: 1px; " required>
+                        </div>
+                        </div>
+                        <div type="submit"  class="keyButton" id="clickSubmit" style="margin-top: 18px;">Submit</div>
+                        <div class="keyButton" id="newConsumer" style="margin-top: 18px;">I'm New to Feedreview</div>
+                      <div class="externalLinksContainer" style="padding: 10px; padding-top: 20px; display: flex; margin-top: 15px;">
+                        <a href="./reset.html" style="margin-bottom: 5px; text-decoration: none;  color: #0090f6; margin-top: px;">Forgot your key?</a>
+                        <a href="./newID.html" style="margin-bottom: 5px; text-decoration: none;  color: #0090f6; margin-left: 180px;">Forgot your ID?</a>
+                      </div>
+                        <br>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        /*import { WebArtino } from "https://webartino.pages.dev/webartino.js"
+        **import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
+        **import { axios } from "axios";*/
+        if(localStorage.getItem("loggedIn") === "yes") {
+            location.href = "/index.html";
+        }else{
+            document.getElementById("clickSubmit").onclick = function() {
+                document.getElementById("clickSubmit").style.background = "rgb(125, 0, 0)";
+                document.getElementById("clickSubmit").innerHTML = "Please Wait..."
+                document.getElementById("clickSubmit").style.color = "rgb(195,195,195)";
+                document.getElementById("clickSubmit").style.userSelect = "none";
+                document.getElementById("loginForm").submit();
+            }
+           document.getElementById("newConsumer").onclick = function() {
+               window.open("/newConsumer.html");
+           }
+        }
+    </script>
+</body>
+</html>
